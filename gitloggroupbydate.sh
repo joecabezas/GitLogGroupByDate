@@ -2,18 +2,42 @@ usage()
 {
 cat << EOF
 
-Uso: $0 <options>
+GitLogGroupByDate
+=================
 
-Este script transforma todas las imagenes de una cierta carpeta al formato
-PGM, y las guarda en un subdirectorio llamado pgm/ dentro de la carpeta
-mencionada.
+a shell script to show commits grouped by date, using date range and author defined by user with default values
 
-OPCIONES:
-	-h	Imprime este mensaje de ayuda de uso
-	-d	Carpeta donde estan las imagenes a transformar
-	-e	Extension de los archivos a transformar
-	-t	Carpeta destino de imagenes transformadas (default: pgm)
-	-r	Argumento -resize usado por ImageMagick (default: 100%)
+USAGE
+-----
+
+* ./gitloggroupbydate.sh [-s <SINCE DATE>] [-u <UNTIL DATE>] [-a <AUTHOR>]
+
+-h	show this help page
+
+-s	since date (default "1 week ago")
+	date to begin log, see DATE EXAMPLES
+
+-u	until date (default "now")
+	date to end log, see DATE EXAMPLES
+
+-a	author name
+	filter commits by author (can be a partial name)
+
+DATE EXAMPLES
+-------------
+
+	"2012-06-11", "11 jun", "yesterday", "1 week ago"
+
+USAGE EXAMPLES
+--------------
+
+Shows commits between jun 11th and jun 15th
+
+	./gitloggroupbydate.sh -s "2012-06-11" -u "2012-06-15"
+
+Shows commits made by "joe", since jun 11th until today
+
+	./gitloggroupbydate.sh -s "11 jun" -u "today" -a "joe"
 
 EOF
 }
